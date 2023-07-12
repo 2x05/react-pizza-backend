@@ -138,8 +138,9 @@ class PizzaController {
         item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
       );
     }
+    const pageCount = Math.ceil(result.length / pagesize);
     result = paginate(result, pagesize, pagenumber);
-    return res.json(result);
+    return res.json({ data: result, pagecount: pageCount });
   }
 }
 
